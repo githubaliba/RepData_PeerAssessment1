@@ -1,0 +1,41 @@
+My First R Markdown File
+========================
+
+This is my very first Rmd File!
+
+Here we're going to load some data.
+
+```{r data_summary,echo=FALSE}
+library(datasets)
+data(airquality)
+summary(airquality)
+```
+
+Let's first make a pair plot.
+
+```{r pairs_plot}
+pairs(airquality)
+```
+
+```{r,echo=FALSE,results='hide'}
+rand <- rnorm(1)
+```
+
+the current time is `r format(Sys.time(), "%a %b %d %X %Y")`  
+my favorite number is `r rand`.
+
+##XTABLE
+```{r fitmodel}
+library(datasets)
+data(airquality)
+fit <- lm(Ozone ~ Wind + Temp + Solar.R, data = airquality)
+```
+
+Here is summary of regression coefficients
+
+```{r showtable,results="asis"}
+library(xtable)
+xt <- xtable(summary(fit))
+print(xt, type="html")
+```
+
