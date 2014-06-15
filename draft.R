@@ -46,6 +46,10 @@ intervalAverageActivity[intervalAverageActivity$steps == max(intervalAverageActi
 ## PART3: Handling NA Values
 sum(is.na(activity$steps))
 library(plyr)
+imputedActivity <- ddply(activity,"date",mutate,dailyAverage=mean(steps, na.rm=TRUE))
+imputedActivity <- ddply(imputedActivity,"interval",mutate,intervalAverage=mean(steps,na.rm=TRUE))
+
+
 
 ## PART4: Weekend / Weekday Graph
 activity$day = weekdays(as.Date(activity$date))
