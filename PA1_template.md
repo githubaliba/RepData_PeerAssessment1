@@ -313,7 +313,7 @@ It looks like there is a difference between weekdays and weekends.  To explore t
 
 ```r
 activity$day <- factor(activity$day)
-xyplot(steps~interval |day, activity,type="l",layout=c(3,3))
+xyplot(steps~interval |day, activity,index.cond=list(c(1,5,7,6,2,4,3)),type="l",layout=c(1,7))
 ```
 
 ![plot of chunk drawWeekdayComparisons](figure/drawWeekdayComparisons.png) 
